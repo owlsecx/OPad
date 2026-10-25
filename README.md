@@ -18,13 +18,18 @@
 
 ## 📌 Overview
 
-Generate cryptographically secure OTP keys,
+OPad implements one-time pad / Vernam XOR cryptography: generate CSPRNG OTP keys, encrypt/decrypt text or files, analyse key entropy, and support multi-format I/O. CLI helpers generate N random key bytes (hex or base64) and analyse a key file's entropy/quality as JSON. Correct OTP use requires a random, secret, never-reused key at least as long as the message.
 
 ---
 
 ## ✨ Features
 
-- One-Time Pad and Vernam XOR cipher: key generation, encryption, entropy analysis and key splitting
+- Generate cryptographically secure OTP key bytes via CSPRNG (`--genkey N`)
+- Output encoding for generated keys: hex or base64 (`--format`)
+- Analyse a key file's entropy/quality and print JSON (`--analyze`)
+- Vernam XOR encrypt/decrypt for text and files in the interactive workflow
+- Key entropy analysis (Shannon, chi-squared) and XOR secret sharing helpers
+- HMAC-SHA256 integrity tags and clipboard / output-directory support in the full UI
 
 ---
 
@@ -38,7 +43,10 @@ Generate cryptographically secure OTP keys,
 ## 🚀 Usage
 
 ```bash
-./OPad
+./OPad --genkey 32 --format hex
+./OPad --genkey 64 --format b64
+./OPad --analyze key.bin
+./OPad --help
 ```
 
 ---
